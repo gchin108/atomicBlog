@@ -1,54 +1,53 @@
 import { connectToDB } from "@/utils/database";
-import noteModel from "@/models/noteModel";
+import postModel from "@/models/postModel";
 import { NextResponse } from "next/server";
 
 export const GET = async (request) => {
   try {
     await connectToDB();
 
-    const notes = await noteModel.find();
+    const posts = await postModel.find();
 
-    return new NextResponse(JSON.stringify(notes), { status: 200 });
+    return new Response(JSON.stringify(posts), { status: 200 });
   } catch (err) {
-    return new NextResponse("Database Error", { status: 500 });
+    return new Response("Database Error", { status: 500 });
   }
 };
 
 export const POST = async (request) => {
-  const { title, content } = await request.json();
-
+  const { title, body } = await request.json();
+  // console.log(title,body)
   try {
     await connectToDB();
-    const newNote = new noteModel({ title: title, content, content });
+    const newPost = new postModel({ title: title, body: body });
 
-    await newNote.save();
-    return new Response(JSON.stringify(newNote), { status: 201 });
+    await newPost.save();
+    return new Response(JSON.stringify(newPost), { status: 201 });
   } catch (error) {
-    return new Response("Failed to create a new prompt", { status: 500 });
+    return new Response("Failed to create a new Post", { status: 500 });
   }
 };
 
 export const PATCH = async (request) => {
-  const { title, content, _id } = await request.json();
+  const { _id } = await request.json();
   // console.log(title)
   // console.log(content)
   try {
     await connectToDB();
 
     // Find the existing note by ID
-    const existingNote = await noteModel.findById(_id);
+    const existingPost = await postModel.findById(_id);
 
-    if (!existingNote) {
+    if (!existingPost) {
       return new Response("Note not found", { status: 404 });
     }
 
     // Update the note with new data
-    existingNote.title = title;
-    existingNote.content = content;
+    existingPost.learn = !existingPost.learn;
 
-    await existingNote.save();
-    // console.log("changed note: " + existingNote);
-    return new Response(JSON.stringify(existingNote), { status: 201 });
+    await existingPost.save();
+    // console.log("changed note: " + existingPost);
+    return new Response(JSON.stringify(existingPost), { status: 201 });
   } catch (error) {
     return new Response("Error Updating Note", { status: 500 });
   }
@@ -59,7 +58,7 @@ export const DELETE = async (request) => {
   const { _id } = await request.json();
   try {
     await connectToDB();
-    const noteToDelete = await noteModel.findByIdAndRemove(_id);
+    const noteToDelete = await postModel.findByIdAndRemove(_id);
     // console.log("noteToDelete: " + noteToDelete)
     return new Response("Prompt deleted successfully", { status: 200 });
   } catch (err) {

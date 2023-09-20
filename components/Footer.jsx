@@ -1,5 +1,10 @@
 import React from 'react'
 
 export default function Footer() {
-return <footer>&copy; by The Atomic Blog ✌️</footer>;
+return (
+  <footer>
+    &copy; by The Atomic Blog ✌️
+
+  </footer>
+);
 }

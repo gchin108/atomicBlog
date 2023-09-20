@@ -78,7 +78,8 @@ body {
   border: 1px solid #ffa94d;
   background-color: #ffa94d;
   font-weight: 700;
-  padding: 9px 24px;
   cursor: pointer;
+  flex-shrink: 0;
+  
 }
 

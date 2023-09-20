@@ -5,6 +5,8 @@ import AppV1 from '@/components/Appv1'
 
 export default function Page() {
   return (
-    <div><App/></div>
-  )
+    <div className="">
+      <App />
+    </div>
+  );
 }

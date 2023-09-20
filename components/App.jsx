@@ -20,7 +20,7 @@ const [isFakeDark, setIsFakeDark] = useState(true);
   }, [isFakeDark]);
 
   return (
-    <section className="max-w-[1140px] mt-0 m-auto">
+    <section className="max-w-[1140px] mt-0 m-auto h-screen flex flex-col">
       <button
         onClick={() => setIsFakeDark((isFakeDark) => !isFakeDark)}
         className="btn-fake-dark-mode"
@@ -29,9 +29,11 @@ const [isFakeDark, setIsFakeDark] = useState(true);
       </button>
 
       <PostProvider>
-        <Header />
-        <Main />
-        <Archive />
+        <div className="flex-1">
+          <Header />
+          <Main />
+          <Archive />
+        </div>
         <Footer />
       </PostProvider>
     </section>
