@@ -35,16 +35,16 @@ export default function Archive() {
           {learned.map((post) => (
             <div
               key={learned._id}
-              className="border-solid border-[1px] border-[#ffe8cc] py-[4px] px-[8px] flex gap-20 justify-between items-center hover:bg-[#fff4e6]"
+              className="border-solid border-[1px] border-[#ffe8cc] py-[4px] px-[8px] flex gap-20 justify-between items-center hover:bg-gray-600"
             >
               <div>
                 <strong>{post.title}:</strong>{" "}
-                <TextExpander>{post.body}</TextExpander>
+                <TextExpander textStyle="max-w-[900px]">{post.body}</TextExpander>
               </div>
               <div className="flex items-center gap-4">
                 <button
                   onClick={() => onLearn(post._id)}
-                  className="py-[4px] px-[8px] text-[14px] btn-small  "
+                  className="py-[4px] px-[8px] text-[14px] btn-small w-fit "
                 >
                   Add as new post
                 </button>

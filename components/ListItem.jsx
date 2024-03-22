@@ -38,16 +38,16 @@ export default function ListItem({ toLearn }) {
   return isEditing ? (
     <div
       ref={postRef}
-      className="border-[1px] border-solid border-[#ffe8cc] hover:bg-[#fff4e6] px-5 py-4 flex flex-col"
+      className="border-[1px] max-w-fit border-solid border-[#ffe8cc] !dark:hover:bg-gray-600 px-5 py-4 flex flex-col"
     >
       <input
         value={editedTitle}
         onChange={(e) => setEditedTitle(e.target.value)}
-        className="capitalize font-bold text-xl mb-[16px] text-[#333] w-fit"
+        className="capitalize font-bold text-xl mb-[16px] dark:text-black "
       />
 
       <textarea
-        className="h-[100px] resize-none"
+        className="h-[100px] resize-none dark:text-black"
         value={editedContent}
         onChange={(e) => setEditedContent(e.target.value)}
       />
@@ -63,8 +63,8 @@ export default function ListItem({ toLearn }) {
       </button>
     </div>
   ) : (
-    <div className="border-[1px] border-solid border-[#ffe8cc] hover:bg-[#fff4e6] py-[16px] px-[20px]">
-      <h3 className="capitalize font-bold text-xl mb-[16px] text-[#333] flex justify-between">
+    <div className="border-[1px] border-solid border-[#ffe8cc] dark:hover:bg-gray-600 hover:bg-[#fff4e6] py-[16px] px-[20px]">
+      <h3 className="capitalize font-bold text-xl mb-[16px] dark:text-gray-200 flex justify-between">
         {toLearn.title}
         <button
           className="text-sm hover:bg-red-700"
@@ -76,7 +76,7 @@ export default function ListItem({ toLearn }) {
 
       <div>
         <TextExpander
-          textStyle="cursor-pointer hover:text-red-400"
+          textStyle="cursor-pointer hover:text-red-400 "
           textOnCliked={() => setIsEditing(true)}
         >
           {toLearn.body}

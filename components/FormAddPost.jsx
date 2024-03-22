@@ -21,13 +21,13 @@ export default function FormAddPost() {
        value={title}
        onChange={(e) => setTitle(e.target.value)}
        placeholder="Post title"
-       className="input placeholder:text-[#999]"
+       className="input placeholder:text-[#999] dark:text-black"
      />
      <textarea
        value={body}
        onChange={(e) => setBody(e.target.value)}
        placeholder="Post body"
-       className="textarea placeholder:text-[#999] resize-none"
+       className="textarea placeholder:text-[#999] dark:text-black"
      />
      <button className="btn btn-small">Add post</button>
    </form>

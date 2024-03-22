@@ -1,3 +1,4 @@
+"use client"
 import { usePosts } from "./PostProvider";
 import FormAddPost from "./FormAddPost";
 import Posts from "./Posts";

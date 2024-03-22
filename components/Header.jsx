@@ -1,3 +1,4 @@
+"use client"
 import { usePosts } from "./PostProvider";
 import Results from "./Results";
 import SearchPosts from "./SearchPosts";
